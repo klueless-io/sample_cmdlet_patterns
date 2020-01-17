@@ -124,5 +124,33 @@ module SampleCmdletPatterns
       require 'tty-which'
       TTY::Which.exist?(*args)
     end
+
+    # Helpers for printing out some data
+    def pretty(data)
+      heading(JSON.pretty_generate(data))
+    end
+
+    def heading(heading)
+      puts '-' * 70
+      puts heading
+      puts '-' * 70
+    end
+
+    def print_all(data)
+      keys = data.first.keys
+      data.each do |row|
+        keys.each do |key|
+          puts "#{key.to_s.rjust(20)}: #{row[key].to_s.delete("\n")[1..100]}"
+        end
+        puts '-' * 120
+      end
+    end
+
+    def pretty_table(heading, column_headings, column_values)
+      heading heading
+
+      table = TTY::Table.new column_headings, column_values
+      puts table.render(:unicode, multiline: true, resize: true)
+    end
   end
 end
