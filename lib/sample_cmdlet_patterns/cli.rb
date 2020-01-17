@@ -51,6 +51,22 @@ module SampleCmdletPatterns
     end
     
     #
+    # markdown
+    #
+    desc 'markdown SUBCOMMAND', 'Markdown - This is the main entry point to Markdown subcommands'
+    method_option :help, aliases: '-h',
+                         type: :boolean,
+                         desc: 'Display usage information'
+    def markdown(subcommand = :gui)
+      if options[:help]
+        invoke :help, ['markdown']
+      else
+        require_relative 'commands/markdown'
+        SampleCmdletPatterns::Commands::Markdown.new(subcommand, options).execute
+      end
+    end
+    
+    #
     # progress_bar
     #
     desc 'progress_bar SUBCOMMAND', 'Progress Bar - This is the main entry point to Progress Bar subcommands'
