@@ -1,0 +1,6 @@
+#ifndef SAMPLE_CMDLET_PATTERNS_H
+#define SAMPLE_CMDLET_PATTERNS_H 1
+
+#include "ruby.h"
+
+#endif /* SAMPLE_CMDLET_PATTERNS_H */
