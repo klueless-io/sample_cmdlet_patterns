@@ -1,8 +1,12 @@
-# SampleCmdletPatterns
+# Sample Cmdlet Patterns
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sample_cmdlet_patterns`. To experiment with that code, run `bin/console` for an interactive prompt.
+> Sample Cmdlet Patterns is a command line tool for accessing various input and out patterns that are available.
 
-TODO: Delete this and the text above, and describe your gem
+Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sample_cmdlet_patterns`.
+
+When using the source code for this gem, start by running `bin/setup` to install locally or `bundle install`
+
+To experiment with that code, run `bin/console` for an interactive prompt or run `exe/sample_cmdlet_patterns` to see a list of commands.
 
 ## Installation
 
@@ -14,11 +18,29 @@ gem 'sample_cmdlet_patterns'
 
 And then execute:
 
-    $ bundle
+```bash
+bundle install
+```
 
 Or install it yourself as:
 
-    $ gem install sample_cmdlet_patterns
+```bash
+gem install sample_cmdlet_patterns
+```
+
+## Stories
+
+
+As a Develop, I should be able to find simple code patterns for cmdline actions, so that I am more efficient
+
+- Create new commandline tool
+- Setup deployment pipeline
+- Setup guard and unit tests
+
+
+As a XX, I should be able to , so that I
+
+
 
 ## Usage
 
@@ -41,3 +63,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the SampleCmdletPatterns project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/sample_cmdlet_patterns/blob/master/CODE_OF_CONDUCT.md).
+
+## Copyright
+
+Copyright (c) David. See [MIT License](LICENSE.txt) for further details.
