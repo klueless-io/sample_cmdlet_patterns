@@ -18,11 +18,12 @@ module SampleCmdletPatterns
       #
       # sample: output.puts 'OK'
       def execute(input: $stdin, output: $stdout)
-        logger.info "Deployed successfully"
-        logger.info "Deployed", "successfully"
-        logger.info { "Dynamically generated info" }
+        logger = TTY::Logger.new
+        logger.info 'Deployed successfully'
+        logger.info 'Deployed', 'successfully'
+        logger.info { 'Dynamically generated info' }
 
-        logger.success "Include structured data", myapp: "myapp", env: "prod"
+        logger.success 'Include structured data', myapp: 'myapp', env: 'prod'
 
         :gui
       end

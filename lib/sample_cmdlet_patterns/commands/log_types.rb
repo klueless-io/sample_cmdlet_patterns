@@ -20,8 +20,8 @@ module SampleCmdletPatterns
       def execute(input: $stdin, output: $stdout)
         logger = TTY::Logger.new do |config|
           config.types = {
-            thanks: {level: :info},
-            done: {level: :info}
+            thanks: { level: :info },
+            done: { level: :info }
           }
           config.handlers = [
             [:console, {
