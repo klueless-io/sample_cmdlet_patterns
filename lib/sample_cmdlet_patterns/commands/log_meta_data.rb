@@ -19,7 +19,7 @@ module SampleCmdletPatterns
       # sample: output.puts 'OK'
       def execute(input: $stdin, output: $stdout)
         logger = TTY::Logger.new do |config|
-          config.metadata = %w[date time]
+          config.metadata = [:date, :time]
         end
         logger.success 'Include structured data', myapp: 'myapp', env: 'prod'
 
