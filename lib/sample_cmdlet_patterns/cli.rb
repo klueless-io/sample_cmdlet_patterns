@@ -97,5 +97,37 @@ module SampleCmdletPatterns
         SampleCmdletPatterns::Commands::Prompt.new(subcommand, options).execute
       end
     end
+    
+    #
+    # spinner
+    #
+    desc 'spinner SUBCOMMAND', 'Spinner - This is the main entry point to Spinner subcommands'
+    method_option :help, aliases: '-h',
+                         type: :boolean,
+                         desc: 'Display usage information'
+    def spinner(subcommand = :gui)
+      if options[:help]
+        invoke :help, ['spinner']
+      else
+        require_relative 'commands/spinner'
+        SampleCmdletPatterns::Commands::Spinner.new(subcommand, options).execute
+      end
+    end
+    
+    #
+    # table
+    #
+    desc 'table SUBCOMMAND', 'Table - This is the main entry point to Table subcommands'
+    method_option :help, aliases: '-h',
+                         type: :boolean,
+                         desc: 'Display usage information'
+    def table(subcommand = :gui)
+      if options[:help]
+        invoke :help, ['table']
+      else
+        require_relative 'commands/table'
+        SampleCmdletPatterns::Commands::Table.new(subcommand, options).execute
+      end
+    end
   end
 end
