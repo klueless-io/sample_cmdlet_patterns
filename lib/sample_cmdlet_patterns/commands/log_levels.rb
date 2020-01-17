@@ -18,6 +18,7 @@ module SampleCmdletPatterns
       #
       # sample: output.puts 'OK'
       def execute(input: $stdin, output: $stdout)
+        logger = TTY::Logger.new
         logger.debug    'logs message at :debug level'
         logger.info     'logs message at :info level'
         logger.success  'logs message at :info level'

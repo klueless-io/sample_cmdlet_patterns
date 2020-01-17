@@ -3,26 +3,29 @@
 require_relative '../command'
 
 require 'tty-config'
-require 'tty-logger'
+require 'tty-prompt'
+require 'tty-progressbar'
 
 module SampleCmdletPatterns
   module Commands
-    # Log exceptions
-    class LogExceptions < SampleCmdletPatterns::Command
+    # Simple progress bar
+    class ProgressBarSimple < SampleCmdletPatterns::Command
       def initialize(options)
         @options = options
       end
 
-      # Execute LogExceptions subcommand taking input from
+      # Execute ProgressBarSimple subcommand taking input from
       # a input stream and writing to output stream
       #
       # sample: output.puts 'OK'
       def execute(input: $stdin, output: $stdout)
-        logger = TTY::Logger.new
-        begin
-          raise ArgumentError, 'Wrong data'
-        rescue ArgumentError => e
-          logger.fatal('Error:', e)
+        prompt.ok('simple progress bar')
+
+        bar = TTY::ProgressBar.new("downloading [:bar]", total: 30)
+        
+        30.times do
+          sleep(0.1)
+          bar.advance(1)
         end
 
         :gui
