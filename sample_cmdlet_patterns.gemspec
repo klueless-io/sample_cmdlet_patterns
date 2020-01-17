@@ -39,7 +39,7 @@ Gem::Specification.new do |spec|
   # spec.add_dependency 'tty-color',       '~> 0.5'
   # spec.add_dependency 'tty-command',     '~> 0.9.0'
   spec.add_dependency 'tty-config',      '~> 0.3.2'
-  # spec.add_dependency 'tty-cursor',      '~> 0.7'
+  spec.add_dependency 'tty-cursor',      '~> 0.7'
   # spec.add_dependency 'tty-editor',      '~> 0.5'
   spec.add_dependency 'tty-file',        '~> 0.8.0'
   spec.add_dependency 'tty-font',        '~> 0.4.0'
