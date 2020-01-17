@@ -17,5 +17,21 @@ module SampleCmdletPatterns
       puts 'v' + SampleCmdletPatterns::VERSION
     end
     map %w[--version -v] => :version
+
+    #
+    # font
+    #
+    desc 'font SUBCOMMAND', 'Font - This is the main entry point to Font subcommands'
+    method_option :help, aliases: '-h',
+                         type: :boolean,
+                         desc: 'Display usage information'
+    def font(subcommand = :gui)
+      if options[:help]
+        invoke :help, ['font']
+      else
+        require_relative 'commands/font'
+        SampleCmdletPatterns::Commands::Font.new(subcommand, options).execute
+      end
+    end
   end
 end
