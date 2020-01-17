@@ -18,6 +18,13 @@ module SampleCmdletPatterns
     end
     map %w[--version -v] => :version
 
+    desc 'toc', 'Table of contents'
+    def toc
+      require_relative 'commands/toc'
+      SampleCmdletPatterns::Commands::Toc.new({}).execute
+    end
+    map %w[--toc] => :toc
+
     #
     # font
     #
@@ -63,6 +70,22 @@ module SampleCmdletPatterns
       else
         require_relative 'commands/markdown'
         SampleCmdletPatterns::Commands::Markdown.new(subcommand, options).execute
+      end
+    end
+    
+    #
+    # pie
+    #
+    desc 'pie SUBCOMMAND', 'Pie - This is the main entry point to Pie subcommands'
+    method_option :help, aliases: '-h',
+                         type: :boolean,
+                         desc: 'Display usage information'
+    def pie(subcommand = :gui)
+      if options[:help]
+        invoke :help, ['pie']
+      else
+        require_relative 'commands/pie'
+        SampleCmdletPatterns::Commands::Pie.new(subcommand, options).execute
       end
     end
     
