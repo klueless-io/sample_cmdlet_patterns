@@ -138,6 +138,22 @@ module SampleCmdletPatterns
     end
     
     #
+    # pager
+    #
+    desc 'pager SUBCOMMAND', 'Pager - This is the main entry point to Pager subcommands'
+    method_option :help, aliases: '-h',
+                         type: :boolean,
+                         desc: 'Display usage information'
+    def pager(subcommand = :gui)
+      if options[:help]
+        invoke :help, ['pager']
+      else
+        require_relative 'commands/pager'
+        SampleCmdletPatterns::Commands::Pager.new(subcommand, options).execute
+      end
+    end
+    
+    #
     # pie
     #
     desc 'pie SUBCOMMAND', 'Pie - This is the main entry point to Pie subcommands'
