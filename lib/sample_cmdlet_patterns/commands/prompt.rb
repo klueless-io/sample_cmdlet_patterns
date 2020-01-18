@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../command'
+require_relative '../exit_app'
 
 require 'tty-config'
 require 'tty-prompt'
@@ -81,14 +82,23 @@ module SampleCmdletPatterns
           'slider',
           'suggest',
           'validation',
-          'q'
           # { name: :gui, disabled: '(:gui disabled, you are already on this menu)' }
         ]
 
-        subcommand = prompt.select('Select your subcommand?', choices, per_page: 15, filter: true, cycle: true)
+        begin
+          prompt.on(:keyctrl_x, :keyescape) do
+            raise ExitApp
+          end
 
-        command = SampleCmdletPatterns::Commands::Prompt.new(subcommand, {})
-        command.execute(input: @input, output: @output)
+          subcommand = prompt.select('Select your subcommand (ESC to Exit)?', choices, per_page: 15, filter: true, cycle: true)
+
+          command = SampleCmdletPatterns::Commands::Prompt.new(subcommand, {})
+          command.execute(input: @input, output: @output)
+        rescue SampleCmdletPatterns::ExitApp
+          puts
+          prompt.warn 'go up one menu....'
+          @subcommand = nil
+        end
       end
     end
   end

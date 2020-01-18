@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../command'
+require_relative '../exit_app'
 
 require 'tty-config'
 require 'tty-prompt'
@@ -64,7 +65,7 @@ module SampleCmdletPatterns
             require_relative 'which'
             cmd = SampleCmdletPatterns::Commands::Which.new('gui', {})
             @command = cmd&.execute(input: input, output: output)
-          when :q
+          when :exit
             break
           else
             @command = gui
@@ -90,13 +91,25 @@ module SampleCmdletPatterns
           'spinner',
           'table',
           'which',
-          'q'
           # { name: :gui, disabled: '(:gui disabled, you are already on this menu)' }
         ]
 
-        command = prompt.select('Select your command?', choices, per_page: 15, filter: true, cycle: true)
+        begin
+          prompt.on(:keyctrl_x, :keyescape) do
+            raise ExitApp
+          end
 
-        command.to_sym
+          command = prompt.select('Select your command?', choices, per_page: 15, filter: true, cycle: true)
+
+          command.to_sym
+        rescue SampleCmdletPatterns::ExitApp
+          puts
+          puts
+          prompt.warn 'exiting....'
+          puts
+          :exit
+        end
+
       end
     end
   end
