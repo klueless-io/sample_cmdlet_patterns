@@ -42,6 +42,22 @@ module SampleCmdletPatterns
     end
     
     #
+    # key_reader
+    #
+    desc 'key_reader SUBCOMMAND', 'Key Reader - Provides features necessary for building line editing and keyboard event processing in terminal applications!'
+    method_option :help, aliases: '-h',
+                         type: :boolean,
+                         desc: 'Display usage information'
+    def key_reader(subcommand = :gui)
+      if options[:help]
+        invoke :help, ['key_reader']
+      else
+        require_relative 'commands/key_reader'
+        SampleCmdletPatterns::Commands::KeyReader.new(subcommand, options).execute
+      end
+    end
+    
+    #
     # log
     #
     desc 'log SUBCOMMAND', 'Log - This is the main entry point to Log subcommands'
@@ -122,6 +138,22 @@ module SampleCmdletPatterns
     end
     
     #
+    # screen
+    #
+    desc 'screen SUBCOMMAND', 'Screen - Terminal screen size detection which works on Linux, OS X and Windows/Cygwin platforms and supports MRI, JRuby and Rubinius interpreters.'
+    method_option :help, aliases: '-h',
+                         type: :boolean,
+                         desc: 'Display usage information'
+    def screen(subcommand = :gui)
+      if options[:help]
+        invoke :help, ['screen']
+      else
+        require_relative 'commands/screen'
+        SampleCmdletPatterns::Commands::Screen.new(subcommand, options).execute
+      end
+    end
+    
+    #
     # spinner
     #
     desc 'spinner SUBCOMMAND', 'Spinner - This is the main entry point to Spinner subcommands'
@@ -166,22 +198,6 @@ module SampleCmdletPatterns
       else
         require_relative 'commands/which'
         SampleCmdletPatterns::Commands::Which.new(subcommand, options).execute
-      end
-    end
-    
-    #
-    # screen
-    #
-    desc 'screen SUBCOMMAND', 'Screen - Terminal screen size detection which works on Linux, OS X and Windows/Cygwin platforms and supports MRI, JRuby and Rubinius interpreters.'
-    method_option :help, aliases: '-h',
-                         type: :boolean,
-                         desc: 'Display usage information'
-    def screen(subcommand = :gui)
-      if options[:help]
-        invoke :help, ['screen']
-      else
-        require_relative 'commands/screen'
-        SampleCmdletPatterns::Commands::Screen.new(subcommand, options).execute
       end
     end
   end

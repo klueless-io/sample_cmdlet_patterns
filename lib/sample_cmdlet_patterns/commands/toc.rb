@@ -24,6 +24,10 @@ module SampleCmdletPatterns
             require_relative 'font'
             cmd = SampleCmdletPatterns::Commands::Font.new('gui', {})
             @command = cmd&.execute(input: input, output: output)
+          when :key_reader
+            require_relative 'key_reader'
+            cmd = SampleCmdletPatterns::Commands::KeyReader.new('gui', {})
+            @command = cmd&.execute(input: input, output: output)
           when :log
             require_relative 'log'
             cmd = SampleCmdletPatterns::Commands::Log.new('gui', {})
@@ -44,6 +48,10 @@ module SampleCmdletPatterns
             require_relative 'prompt'
             cmd = SampleCmdletPatterns::Commands::Prompt.new('gui', {})
             @command = cmd&.execute(input: input, output: output)
+          when :screen
+            require_relative 'screen'
+            cmd = SampleCmdletPatterns::Commands::Screen.new('gui', {})
+            @command = cmd&.execute(input: input, output: output)
           when :spinner
             require_relative 'spinner'
             cmd = SampleCmdletPatterns::Commands::Spinner.new('gui', {})
@@ -55,10 +63,6 @@ module SampleCmdletPatterns
           when :which
             require_relative 'which'
             cmd = SampleCmdletPatterns::Commands::Which.new('gui', {})
-            @command = cmd&.execute(input: input, output: output)
-          when :screen
-            require_relative 'screen'
-            cmd = SampleCmdletPatterns::Commands::Screen.new('gui', {})
             @command = cmd&.execute(input: input, output: output)
           when :q
             break
@@ -76,15 +80,16 @@ module SampleCmdletPatterns
 
         choices = [
           'font',
+          'key_reader',
           'log',
           'markdown',
           'pie',
           'progress_bar',
           'prompt',
+          'screen',
           'spinner',
           'table',
           'which',
-          'screen',
           'q'
           # { name: :gui, disabled: '(:gui disabled, you are already on this menu)' }
         ]

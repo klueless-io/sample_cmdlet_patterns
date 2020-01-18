@@ -50,11 +50,12 @@ Gem::Specification.new do |spec|
   # spec.add_dependency 'tty-platform',    '~> 0.2'
   spec.add_dependency 'tty-progressbar', '~> 0.17'
   spec.add_dependency 'tty-prompt',      '~> 0.19'
-  # spec.add_dependency 'tty-screen',      '~> 0.7'
+  spec.add_dependency 'tty-reader',      '~> 0.7' # I think this is already in prompt
+  spec.add_dependency 'tty-screen',      '~> 0.7'
   spec.add_dependency 'tty-spinner',     '~> 0.9'
   spec.add_dependency 'tty-table',       '~> 0.11.0'
   # spec.add_dependency 'tty-tree',        '~> 0.3'
-  # spec.add_dependency 'tty-which',       '~> 0.4'
+  spec.add_dependency 'tty-which',       '~> 0.4'
   # spec.add_dependency 'equatable',       '~> 0.5'
   spec.add_dependency 'pastel',          '~> 0.7.2'
 end
