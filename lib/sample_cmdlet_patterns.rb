@@ -13,6 +13,7 @@ require 'sample_cmdlet_patterns/commands/prompt'
 require 'sample_cmdlet_patterns/commands/spinner'
 require 'sample_cmdlet_patterns/commands/table'
 require 'sample_cmdlet_patterns/commands/which'
+require 'sample_cmdlet_patterns/commands/screen'
 
 module SampleCmdletPatterns
   # class Error < StandardError; end

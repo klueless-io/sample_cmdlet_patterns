@@ -168,5 +168,21 @@ module SampleCmdletPatterns
         SampleCmdletPatterns::Commands::Which.new(subcommand, options).execute
       end
     end
+    
+    #
+    # screen
+    #
+    desc 'screen SUBCOMMAND', 'Screen - Terminal screen size detection which works on Linux, OS X and Windows/Cygwin platforms and supports MRI, JRuby and Rubinius interpreters.'
+    method_option :help, aliases: '-h',
+                         type: :boolean,
+                         desc: 'Display usage information'
+    def screen(subcommand = :gui)
+      if options[:help]
+        invoke :help, ['screen']
+      else
+        require_relative 'commands/screen'
+        SampleCmdletPatterns::Commands::Screen.new(subcommand, options).execute
+      end
+    end
   end
 end
