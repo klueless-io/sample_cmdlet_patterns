@@ -152,5 +152,21 @@ module SampleCmdletPatterns
         SampleCmdletPatterns::Commands::Table.new(subcommand, options).execute
       end
     end
+    
+    #
+    # which
+    #
+    desc 'which SUBCOMMAND', 'Which - Platform independent implementation of Unix which utility that searches for executable file in the path variable.'
+    method_option :help, aliases: '-h',
+                         type: :boolean,
+                         desc: 'Display usage information'
+    def which(subcommand = :gui)
+      if options[:help]
+        invoke :help, ['which']
+      else
+        require_relative 'commands/which'
+        SampleCmdletPatterns::Commands::Which.new(subcommand, options).execute
+      end
+    end
   end
 end
