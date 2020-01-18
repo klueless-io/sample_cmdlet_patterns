@@ -49,6 +49,10 @@ module SampleCmdletPatterns
             require_relative 'markdown'
             cmd = SampleCmdletPatterns::Commands::Markdown.new('gui', {})
             @command = cmd&.execute(input: input, output: output)
+          when :pager
+            require_relative 'pager'
+            cmd = SampleCmdletPatterns::Commands::Pager.new('gui', {})
+            @command = cmd&.execute(input: input, output: output)
           when :pie
             require_relative 'pie'
             cmd = SampleCmdletPatterns::Commands::Pie.new('gui', {})
@@ -103,6 +107,7 @@ module SampleCmdletPatterns
           'link',
           'log',
           'markdown',
+          'pager',
           'pie',
           'platform',
           'progress_bar',
