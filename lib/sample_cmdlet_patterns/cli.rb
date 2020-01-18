@@ -42,6 +42,22 @@ module SampleCmdletPatterns
     end
     
     #
+    # cursor
+    #
+    desc 'cursor SUBCOMMAND', 'Cursor - Terminal cursor movement and manipulation of cursor properties such as visibility'
+    method_option :help, aliases: '-h',
+                         type: :boolean,
+                         desc: 'Display usage information'
+    def cursor(subcommand = :gui)
+      if options[:help]
+        invoke :help, ['cursor']
+      else
+        require_relative 'commands/cursor'
+        SampleCmdletPatterns::Commands::Cursor.new(subcommand, options).execute
+      end
+    end
+    
+    #
     # editor
     #
     desc 'editor SUBCOMMAND', 'Editor - This is the main entry point to Editor subcommands'

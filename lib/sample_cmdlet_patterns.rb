@@ -5,6 +5,7 @@ require 'sample_cmdlet_patterns/commands/toc'
 
 # Main commands
 require 'sample_cmdlet_patterns/commands/a'
+require 'sample_cmdlet_patterns/commands/cursor'
 require 'sample_cmdlet_patterns/commands/editor'
 require 'sample_cmdlet_patterns/commands/font'
 require 'sample_cmdlet_patterns/commands/key_reader'
