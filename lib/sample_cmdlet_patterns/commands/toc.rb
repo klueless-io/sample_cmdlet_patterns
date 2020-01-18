@@ -52,12 +52,16 @@ module SampleCmdletPatterns
             require_relative 'table'
             cmd = SampleCmdletPatterns::Commands::Table.new('gui', {})
             @command = cmd&.execute(input: input, output: output)
+          when :which
+            require_relative 'which'
+            cmd = SampleCmdletPatterns::Commands::Which.new('gui', {})
+            @command = cmd&.execute(input: input, output: output)
           when :q
             break
           else
             @command = gui
           end
-          
+
         end
       end
 
@@ -75,6 +79,7 @@ module SampleCmdletPatterns
           'prompt',
           'spinner',
           'table',
+          'which',
           'q'
           # { name: :gui, disabled: '(:gui disabled, you are already on this menu)' }
         ]
