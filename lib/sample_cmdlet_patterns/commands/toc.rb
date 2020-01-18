@@ -25,6 +25,10 @@ module SampleCmdletPatterns
             require_relative 'a'
             cmd = SampleCmdletPatterns::Commands::A.new('gui', {})
             @command = cmd&.execute(input: input, output: output)
+          when :cursor
+            require_relative 'cursor'
+            cmd = SampleCmdletPatterns::Commands::Cursor.new('gui', {})
+            @command = cmd&.execute(input: input, output: output)
           when :editor
             require_relative 'editor'
             cmd = SampleCmdletPatterns::Commands::Editor.new('gui', {})
@@ -101,6 +105,7 @@ module SampleCmdletPatterns
 
         choices = [
           'a',
+          'cursor',
           'editor',
           'font',
           'key_reader',
