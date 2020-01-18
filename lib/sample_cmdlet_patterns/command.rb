@@ -95,6 +95,16 @@ module SampleCmdletPatterns
       TTY::Prompt.new(options)
     end
 
+    # Get keyboard reader
+    #
+    # @see http://www.rubydoc.info/gems/tty-reader
+    #
+    # @api public
+    def reader
+      require 'tty-reader'
+      TTY::Reader.new
+    end
+
     # Get terminal screen properties
     #
     # @see http://www.rubydoc.info/gems/tty-screen
