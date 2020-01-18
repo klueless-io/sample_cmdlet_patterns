@@ -21,6 +21,14 @@ module SampleCmdletPatterns
       def execute(input: $stdin, output: $stdout)
         loop do
           case @command
+          when :a
+            require_relative 'a'
+            cmd = SampleCmdletPatterns::Commands::A.new('gui', {})
+            @command = cmd&.execute(input: input, output: output)
+          when :editor
+            require_relative 'editor'
+            cmd = SampleCmdletPatterns::Commands::Editor.new('gui', {})
+            @command = cmd&.execute(input: input, output: output)
           when :font
             require_relative 'font'
             cmd = SampleCmdletPatterns::Commands::Font.new('gui', {})
@@ -28,6 +36,10 @@ module SampleCmdletPatterns
           when :key_reader
             require_relative 'key_reader'
             cmd = SampleCmdletPatterns::Commands::KeyReader.new('gui', {})
+            @command = cmd&.execute(input: input, output: output)
+          when :link
+            require_relative 'link'
+            cmd = SampleCmdletPatterns::Commands::Link.new('gui', {})
             @command = cmd&.execute(input: input, output: output)
           when :log
             require_relative 'log'
@@ -40,6 +52,10 @@ module SampleCmdletPatterns
           when :pie
             require_relative 'pie'
             cmd = SampleCmdletPatterns::Commands::Pie.new('gui', {})
+            @command = cmd&.execute(input: input, output: output)
+          when :platform
+            require_relative 'platform'
+            cmd = SampleCmdletPatterns::Commands::Platform.new('gui', {})
             @command = cmd&.execute(input: input, output: output)
           when :progress_bar
             require_relative 'progress_bar'
@@ -80,11 +96,15 @@ module SampleCmdletPatterns
         prompt = TTY::Prompt.new
 
         choices = [
+          'a',
+          'editor',
           'font',
           'key_reader',
+          'link',
           'log',
           'markdown',
           'pie',
+          'platform',
           'progress_bar',
           'prompt',
           'screen',

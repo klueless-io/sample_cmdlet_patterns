@@ -3,7 +3,6 @@
 require_relative '../command'
 
 require 'tty-config'
-require 'tty-which'
 
 module SampleCmdletPatterns
   module Commands
@@ -19,12 +18,12 @@ module SampleCmdletPatterns
       # sample: output.puts 'OK'
       def execute(input: $stdin, output: $stdout)
         values = [
-          ['less', TTY::Which.exist?('less')],
-          ['git', TTY::Which.exist?('git')],
-          ['ruby', TTY::Which.exist?('ruby')],
-          ['/usr/bin/ruby', TTY::Which.exist?('/usr/bin/ruby')],
-          ['go', TTY::Which.exist?('go')],
-          ['fred', TTY::Which.exist?('fred')]
+          ['less', exec_exist?('less')],
+          ['git', exec_exist?('git')],
+          ['ruby', exec_exist?('ruby')],
+          ['/usr/bin/ruby', exec_exist?('/usr/bin/ruby')],
+          ['go', exec_exist?('go')],
+          ['fred', exec_exist?('fred')]
         ]
 
         pretty_table('Paths Exist?', %w[key exists], values)

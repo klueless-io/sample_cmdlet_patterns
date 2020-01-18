@@ -26,6 +26,38 @@ module SampleCmdletPatterns
     map %w[--toc] => :toc
 
     #
+    # a
+    #
+    desc 'a SUBCOMMAND', 'A - This is the main entry point to A subcommands'
+    method_option :help, aliases: '-h',
+                         type: :boolean,
+                         desc: 'Display usage information'
+    def a(subcommand = :gui)
+      if options[:help]
+        invoke :help, ['a']
+      else
+        require_relative 'commands/a'
+        SampleCmdletPatterns::Commands::A.new(subcommand, options).execute
+      end
+    end
+    
+    #
+    # editor
+    #
+    desc 'editor SUBCOMMAND', 'Editor - This is the main entry point to Editor subcommands'
+    method_option :help, aliases: '-h',
+                         type: :boolean,
+                         desc: 'Display usage information'
+    def editor(subcommand = :gui)
+      if options[:help]
+        invoke :help, ['editor']
+      else
+        require_relative 'commands/editor'
+        SampleCmdletPatterns::Commands::Editor.new(subcommand, options).execute
+      end
+    end
+    
+    #
     # font
     #
     desc 'font SUBCOMMAND', 'Font - This is the main entry point to Font subcommands'
@@ -54,6 +86,22 @@ module SampleCmdletPatterns
       else
         require_relative 'commands/key_reader'
         SampleCmdletPatterns::Commands::KeyReader.new(subcommand, options).execute
+      end
+    end
+    
+    #
+    # link
+    #
+    desc 'link SUBCOMMAND', 'Link - Allows you to test whether a terminal supports hyperlinks and print them to the console.'
+    method_option :help, aliases: '-h',
+                         type: :boolean,
+                         desc: 'Display usage information'
+    def link(subcommand = :gui)
+      if options[:help]
+        invoke :help, ['link']
+      else
+        require_relative 'commands/link'
+        SampleCmdletPatterns::Commands::Link.new(subcommand, options).execute
       end
     end
     
@@ -102,6 +150,22 @@ module SampleCmdletPatterns
       else
         require_relative 'commands/pie'
         SampleCmdletPatterns::Commands::Pie.new(subcommand, options).execute
+      end
+    end
+    
+    #
+    # platform
+    #
+    desc 'platform SUBCOMMAND', 'Platform - Find out the properties of your operating system'
+    method_option :help, aliases: '-h',
+                         type: :boolean,
+                         desc: 'Display usage information'
+    def platform(subcommand = :gui)
+      if options[:help]
+        invoke :help, ['platform']
+      else
+        require_relative 'commands/platform'
+        SampleCmdletPatterns::Commands::Platform.new(subcommand, options).execute
       end
     end
     
