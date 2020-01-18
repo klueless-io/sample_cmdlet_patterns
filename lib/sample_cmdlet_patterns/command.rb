@@ -149,6 +149,7 @@ module SampleCmdletPatterns
     def pretty_table(heading, column_headings, column_values)
       heading heading
 
+      require 'tty-table'
       table = TTY::Table.new column_headings, column_values
       puts table.render(:unicode, multiline: true, resize: true)
     end

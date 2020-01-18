@@ -12,6 +12,7 @@ require 'sample_cmdlet_patterns/commands/progress_bar'
 require 'sample_cmdlet_patterns/commands/prompt'
 require 'sample_cmdlet_patterns/commands/spinner'
 require 'sample_cmdlet_patterns/commands/table'
+require 'sample_cmdlet_patterns/commands/which'
 
 module SampleCmdletPatterns
   # class Error < StandardError; end

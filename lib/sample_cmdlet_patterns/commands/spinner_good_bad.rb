@@ -7,7 +7,7 @@ require 'tty-spinner'
 
 module SampleCmdletPatterns
   module Commands
-    #  spinner
+    # Good/Bad spinners
     class SpinnerGoodBad < SampleCmdletPatterns::Command
       def initialize(options)
         @options = options

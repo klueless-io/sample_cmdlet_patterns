@@ -7,7 +7,7 @@ require 'tty-spinner'
 
 module SampleCmdletPatterns
   module Commands
-    #  spinner
+    # Spinner configured via block
     class SpinnerInBlock < SampleCmdletPatterns::Command
       def initialize(options)
         @options = options
